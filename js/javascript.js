@@ -165,3 +165,21 @@ document.querySelector(".hire-me").addEventListener("click",function() {
 	removeBackSectionClass();
 	addBackSectionClass(sectionIndex)
 })
+
+// function downloadResume(){
+// 	const pdfurl="./docs/AbhishekMishraResume.pdf";
+// 	const anchor=document.createElement('a');
+// 	anchor.href=pdfurl;
+// 	anchor.setAttribute('download',"AbhishekMishraResume.pdf");
+// 	document.body.appendChild(anchor);
+// 	anchor.click();
+// 	document.body.removeChild(anchor);
+// }
+
+function downloadResume(){
+		const pdfurl="./docs/AbhishekMishraResume.pdf";
+		const newWindow=window.open(pdfurl,"_blank");
+		if(newWindow){
+			newWindow.focus();
+		}
+}
