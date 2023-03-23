@@ -921,7 +921,7 @@ transform: scale(0.9);
 	font-weight: 400;
 	text-transform: capitalize;
 }
-.blog .blog-item-inner .blog-info .blog-tags a{
+.blog .blog-item-inner .blog-info .blog-tags span{
 	text-decoration: none;
 	font-weight: 600;
 }
