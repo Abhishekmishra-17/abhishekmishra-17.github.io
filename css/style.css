@@ -392,6 +392,12 @@ border-bottom: 1px solid mediumvioletred;
 	margin-left: 4px;
 	display: inline-block;
 }
+.about .about-content .personal-info .info-item p span a{
+	font-weight: 400;
+	color: #7773c7;
+	margin-left: 4px;
+	display: inline-block;
+}
 .btn{
 	font-size: 16px;
 	font-family: 'Rubik',sans-serif;
