@@ -183,3 +183,31 @@ function downloadResume(){
 			newWindow.focus();
 		}
 }
+// const sendBtn = document.getElementById('send-btn');
+// sendBtn.addEventListener('click',function(event){
+// 	event.preventDefault();
+// 	const name=document.querySelector('input[name="name"]').value;
+// 	const email=document.querySelector('input[name="email"]').value;
+// 	const subject=document.querySelector('input[name="subject"]').value;
+// 	const message=document.querySelector('textarea[name="message"]').value;
+	// const mailtoLink = "mailto:akm171216@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('Name:${name}%0AEmail: ${email}%0ASubject: ${subject}%0AMessage: ${message}')}";
+// 	window.location.href = mailtoLink;
+// });
+const contactForm = document.getElementById('contact-form');
+const sendBtn = document.getElementById('send-btn');
+sendBtn.addEventListener('click',function(event){
+	event.preventDefault();
+	const name=encodeURIComponent(document.querySelector('input[name="name"]').value);
+	const email=encodeURIComponent(document.querySelector('input[name="email"]').value);
+	const subject=encodeURIComponent(document.querySelector('input[name="subject"]').value);
+	const message=encodeURIComponent(document.querySelector('textarea[name="message"]').value);
+	var body = encodeURIComponent("End Time:" + name + '\n' + "Account:" + email + '\n' + "Description:" + message);
+	console.log(body)
+	// const mailtoLink = `mailto:akm171216@gmail.com?subject=${subject}&body={Name=${name} \n Email=${email} \n Message=${message}}`;
+	const mailtoLink=`https://mail.google.com/mail/?view=cm&fs=1&to=mishraabhi8924@gmail.com&su=${subject}&body=Name=${name};\n\tMessage=${message}`;
+	console.log(mailtoLink);
+	// window.location.href = mailtoLink;
+	window.open(mailtoLink,'_blank');
+	contactForm.reset()
+	// window.location.href = mailtoLink;
+});
