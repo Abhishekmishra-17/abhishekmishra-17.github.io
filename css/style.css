@@ -674,8 +674,10 @@ cursor: pointer;
 position: relative;
 }
 .portfolio .portfolio-item-inner .portfolio-img img{
-	width: 100%;
-	display: block;
+	width: 340px;
+	height: 300px;
+	display: flex;
+	zoom: -1;
 }
 
 .portfolio .portfolio-item .portfolio-info{
