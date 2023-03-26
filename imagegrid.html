@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  text-align: center;
+  padding: 32px;
+}
+
+.row {
+  display: -ms-flexbox; 
+  display: flex;
+  -ms-flex-wrap: wrap; 
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+.column {
+  -ms-flex: 50%; 
+  flex: 50%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
+/* Style the buttons */
+.btn {
+  border-radius: 20%;
+  outline: none;
+  padding: 10px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.btn:hover {
+  background-color: #ddd;
+}
+
+.btn.active {
+  background-color: #ec1839;
+  color: white;
+}
+</style>
+</head>
+<body style="background-color:black;">
+
+<!-- Header -->
+<div class="header" id="myHeader">
+  <h1 style="color: #7773c7;">Collage</h1>
+  <p style="color: #7773c7;">Click here to change the grid view.</p>
+  <button class="btn" onclick="one()">1</button>
+  <button class="btn active" onclick="two()">2</button>
+  <button class="btn" onclick="four()">4</button>
+</div>
+
+<!-- Photo Grid -->
+<div class="row"> 
+  <div class="column">
+    <img src="images\portfolio\port1.jpg" style="width:100%">
+    <img src="images\portfolio\port2.jpg" style="width:100%">
+    <img src="images\portfolio\port3.jpg" style="width:100%">
+    <img src="images\portfolio\port4.jpg" style="width:100%">
+    <img src="images\portfolio\port5.jpg" style="width:100%">
+    <img src="images\portfolio\port6.jpg" style="width:100%">
+    <img src="images\portfolio\port9.jpg" style="width:100%">
+    <img src="images\portfolio\port27.jpg" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="images\portfolio\port8.jpg" style="width:100%">
+    <img src="images\portfolio\port7.jpg" style="width:100%">
+    <img src="images\portfolio\port10.jpg" style="width:100%">
+    <img src="images\portfolio\port31.jpg" style="width:100%">
+    <img src="images\portfolio\port13.jpg" style="width:100%">
+    <img src="images\portfolio\port12.jpg" style="width:100%">
+    <img src="images\portfolio\port20.jpg" style="width:100%">
+  </div> 
+  <div class="column">
+    <img src="images\portfolio\port14.jpg" style="width:100%">
+    <img src="images\portfolio\port15.jpg" style="width:100%">
+    <img src="images\portfolio\port16.jpg" style="width:100%">
+    <img src="images\portfolio\port17.jpg" style="width:100%">
+    <img src="images\portfolio\port18.jpg" style="width:100%">
+    <img src="images\portfolio\port19.jpg" style="width:100%">
+    <img src="images\portfolio\port29.jpg" style="width:100%">
+    <img src="images\portfolio\port30.jpg" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="images\portfolio\port21.jpg" style="width:100%">
+    <img src="images\portfolio\port22.jpg" style="width:100%">
+    <img src="images\portfolio\port23.jpg" style="width:100%">
+    <img src="images\portfolio\port24.jpg" style="width:100%">
+    <img src="images\portfolio\port25.jpg" style="width:100%">
+    <img src="images\portfolio\port26.jpg" style="width:100%">
+    <img src="images\portfolio\port28.jpg" style="width:100%">
+    <img src="images\portfolio\port11.jpg" style="width:100%">
+  </div>
+</div>
+
+<script>
+var elements = document.getElementsByClassName("column");
+var ak;
+function one() {
+    for (ak= 0; ak< elements.length; ak++) {
+    elements[ak].style.msFlex = "100%"; 
+    elements[ak].style.flex = "100%";
+  }
+}
+
+function two() {
+  for (ak= 0; ak< elements.length; ak++) {
+    elements[ak].style.msFlex = "50%"; 
+    elements[ak].style.flex = "50%";
+  }
+}
+function four() {
+  for (ak= 0; ak< elements.length; ak++) {
+    elements[ak].style.msFlex = "25%"; 
+    elements[ak].style.flex = "25%";
+  }
+}
+var header = document.getElementById("myHeader");
+var btns = header.getElementsByClassName("btn");
+for (var ak= 0; ak< btns.length; ak++) {
+  btns[ak].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
+
+</body>
+</html>

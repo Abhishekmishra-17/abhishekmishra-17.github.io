@@ -1125,3 +1125,23 @@ font-weight: 400;
 	}
 }
 
+.special-effect{
+	position: absolute;
+	width: 2px;
+	height: 2px;
+	border-radius: 50%;
+	background-color: rgba(135, 245, 184, 0.7);
+	animation: ripple 1s linear;
+}
+@keyframes ripple{
+	from{
+		transform: scale(1);
+		opacity: 0.2;
+	}
+	
+	to{
+		transform: scale(100);
+		opacity: 0.2;
+	}
+	
+}

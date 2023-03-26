@@ -166,16 +166,6 @@ document.querySelector(".hire-me").addEventListener("click",function() {
 	addBackSectionClass(sectionIndex)
 })
 
-// function downloadResume(){
-// 	const pdfurl="./docs/AbhishekMishraResume.pdf";
-// 	const anchor=document.createElement('a');
-// 	anchor.href=pdfurl;
-// 	anchor.setAttribute('download',"AbhishekMishraResume.pdf");
-// 	document.body.appendChild(anchor);
-// 	anchor.click();
-// 	document.body.removeChild(anchor);
-// }
-
 function downloadResume(){
 		const pdfurl="./docs/AbhishekMishraResume.pdf";
 		const newWindow=window.open(pdfurl,"_blank");
@@ -183,16 +173,6 @@ function downloadResume(){
 			newWindow.focus();
 		}
 }
-// const sendBtn = document.getElementById('send-btn');
-// sendBtn.addEventListener('click',function(event){
-// 	event.preventDefault();
-// 	const name=document.querySelector('input[name="name"]').value;
-// 	const email=document.querySelector('input[name="email"]').value;
-// 	const subject=document.querySelector('input[name="subject"]').value;
-// 	const message=document.querySelector('textarea[name="message"]').value;
-	// const mailtoLink = "mailto:akm171216@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('Name:${name}%0AEmail: ${email}%0ASubject: ${subject}%0AMessage: ${message}')}";
-// 	window.location.href = mailtoLink;
-// });
 const contactForm = document.getElementById('contact-form');
 const sendBtn = document.getElementById('send-btn');
 sendBtn.addEventListener('click',function(event){
@@ -210,4 +190,32 @@ sendBtn.addEventListener('click',function(event){
 	window.open(mailtoLink,'_blank');
 	contactForm.reset()
 	// window.location.href = mailtoLink;
-});
+})
+
+const body =document.querySelector('section');
+const sidebar=270;
+let sidebaropen=false;
+function checksidebaropen(){
+const sidebarselect=document.querySelector('.aside');
+const sidebarRect=sidebarselect.getBoundingClientRect();
+const sidebaropen=sidebarRect.left===0;
+return sidebaropen
+}
+document.addEventListener('mousemove',function(event){
+	const x =event.pageX-window.pageXOffset;
+	const y=event.clientY-window.pageYOffset;
+	const sidebaropen=checksidebaropen();
+	const effect =document.createElement('div');
+	effect.className ='special-effect';
+	if(sidebaropen){
+		effect.style.left=x-sidebar+'px';
+	}
+	else{
+		effect.style.left=x+'px';
+	}
+	effect.style.top =y+'px';
+	body.appendChild(effect);
+	setTimeout(function(){
+				effect.remove();
+			},300);
+		});
