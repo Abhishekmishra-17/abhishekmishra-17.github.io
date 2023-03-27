@@ -52,6 +52,7 @@ for (let i = 0; i < totalPortfolioItem; i++) {
 		toggleLightbox();
 	})
 }
+
  function nextItem() {
 if(itemIndex===totalPortfolioItem-1){
 	itemIndex=0;
@@ -219,3 +220,27 @@ document.addEventListener('mousemove',function(event){
 				effect.remove();
 			},300);
 		});
+
+var hreflist=["https://github.com/Abhishekmishra-17/eb3_Mind-benders_Circular-queue-using-array",
+"https://github.com/Abhishekmishra-17/Phenol-formaldehyde-Resin-Urea-formaldehyde-resin",
+"imagegrid.html",
+"https://github.com/Abhishekmishra-17/eb3_Mind-benders_queue-using-array",
+"https://github.com/Abhishekmishra-17/DUDO",
+"https://github.com/Abhishekmishra-17/1st-project-accident-control-management-system",
+"https://github.com/Abhishekmishra-17/eb3_Mind-Benders_Queue-using-Linked-List"]
+const images =document.querySelector('.lightbox-img')
+images.addEventListener('click',function(event){
+	event.preventDefault();
+	const link =hreflist[itemIndex];
+	const popupwidth=500;
+	const popupheight=500;
+	const left =window.innerWidth/2-popupwidth/2;
+	const top =window.innerHeight/2-popupheight/2;
+	const  popup=window.open(link,'_blank',`width=${popupwidth},height=${popupheight},left=${left},top=${top}`);
+	popup.focus();
+	popup.addEventListener('click',function(event){
+		event.preventDefault();
+		window.open(link,'_blank');
+	});
+
+});
