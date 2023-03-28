@@ -6,7 +6,7 @@ window.addEventListener("load",function(){
 })
 
 var typed=new Typed("#typed",{
-	strings:["I'm a python developer."],
+	strings:["Python Developer..."],
 	typeSpeed:90
 });
 
@@ -185,7 +185,7 @@ sendBtn.addEventListener('click',function(event){
 	var body = encodeURIComponent("End Time:" + name + '\n' + "Account:" + email + '\n' + "Description:" + message);
 	console.log(body)
 	// const mailtoLink = `mailto:akm171216@gmail.com?subject=${subject}&body={Name=${name} \n Email=${email} \n Message=${message}}`;
-	const mailtoLink=`https://mail.google.com/mail/?view=cm&fs=1&to=mishraabhi8924@gmail.com&su=${subject}&body=Name=${name};\n\tMessage=${message}`;
+	const mailtoLink=`https://mail.google.com/mail/?view=cm&fs=1&to=Akm171216@gmail.com&su=${subject}&body=Name=${name};\n\tMessage=${message}`;
 	console.log(mailtoLink);
 	// window.location.href = mailtoLink;
 	window.open(mailtoLink,'_blank');
@@ -227,7 +227,12 @@ var hreflist=["https://github.com/Abhishekmishra-17/eb3_Mind-benders_Circular-qu
 "https://github.com/Abhishekmishra-17/eb3_Mind-benders_queue-using-array",
 "https://github.com/Abhishekmishra-17/DUDO",
 "https://github.com/Abhishekmishra-17/1st-project-accident-control-management-system",
-"https://github.com/Abhishekmishra-17/eb3_Mind-Benders_Queue-using-Linked-List"]
+"https://github.com/Abhishekmishra-17/eb3_Mind-Benders_Queue-using-Linked-List",
+"https://github.com/Abhishekmishra-17/Stock-market-price-analysis",
+"https://github.com/Abhishekmishra-17/Attendance-system-using-face-recognition-onscaling-temperature",
+"https://github.com/Abhishekmishra-17/Vehicle-plate-number-detection-using-python",
+"https://github.com/Abhishekmishra-17/hand-emojinator-using-python",
+"https://github.com/Abhishekmishra-17/-Hindi-Devanagari-Handwriting-recognition-using-python"]
 const images =document.querySelector('.lightbox-img')
 images.addEventListener('click',function(event){
 	event.preventDefault();
