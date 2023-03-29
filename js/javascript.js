@@ -182,44 +182,45 @@ sendBtn.addEventListener('click',function(event){
 	const email=encodeURIComponent(document.querySelector('input[name="email"]').value);
 	const subject=encodeURIComponent(document.querySelector('input[name="subject"]').value);
 	const message=encodeURIComponent(document.querySelector('textarea[name="message"]').value);
-	var body = encodeURIComponent("End Time:" + name + '\n' + "Account:" + email + '\n' + "Description:" + message);
-	console.log(body)
+	// var body = encodeURIComponent("End Time:" + name + '\n' + "Account:" + email + '\n' + "Description:" + message);
+	// console.log(body)
+	const mailtoLink = `mailto:akm171216@gmail.com?subject=${subject}&body=${message}%0A%0A%0AThanks,%0A${name}%0A${email}`;
 	// const mailtoLink = `mailto:akm171216@gmail.com?subject=${subject}&body={Name=${name} \n Email=${email} \n Message=${message}}`;
-	const mailtoLink=`https://mail.google.com/mail/?view=cm&fs=1&to=Akm171216@gmail.com&su=${subject}&body=Name=${name};\n\tMessage=${message}`;
-	console.log(mailtoLink);
+	// const mailtoLink=`https://mail.google.com/mail/?view=cm&fs=1&to=Akm171216@gmail.com&su=${subject}&body=Name=${name};\n\tMessage=${message}`;
+	// console.log(mailtoLink);
 	// window.location.href = mailtoLink;
 	window.open(mailtoLink,'_blank');
 	contactForm.reset()
 	// window.location.href = mailtoLink;
 })
 
-const body =document.querySelector('section');
-const sidebar=270;
-let sidebaropen=false;
-function checksidebaropen(){
-const sidebarselect=document.querySelector('.aside');
-const sidebarRect=sidebarselect.getBoundingClientRect();
-const sidebaropen=sidebarRect.left===0;
-return sidebaropen
-}
-document.addEventListener('mousemove',function(event){
-	const x =event.pageX-window.pageXOffset;
-	const y=event.clientY-window.pageYOffset;
-	const sidebaropen=checksidebaropen();
-	const effect =document.createElement('div');
-	effect.className ='special-effect';
-	if(sidebaropen){
-		effect.style.left=x-sidebar+'px';
-	}
-	else{
-		effect.style.left=x+'px';
-	}
-	effect.style.top =y+'px';
-	body.appendChild(effect);
-	setTimeout(function(){
-				effect.remove();
-			},300);
-		});
+// const body =document.querySelector('section');
+// const sidebar=270;
+// let sidebaropen=false;
+// function checksidebaropen(){
+// const sidebarselect=document.querySelector('.aside');
+// const sidebarRect=sidebarselect.getBoundingClientRect();
+// const sidebaropen=sidebarRect.left===0;
+// return sidebaropen
+// }
+// document.addEventListener('mousemove',function(event){
+// 	const x =event.pageX-window.pageXOffset;
+// 	const y=event.clientY-window.pageYOffset;
+// 	const sidebaropen=checksidebaropen();
+// 	const effect =document.createElement('div');
+// 	effect.className ='special-effect';
+// 	if(sidebaropen){
+// 		effect.style.left=x-sidebar+'px';
+// 	}
+// 	else{
+// 		effect.style.left=x+'px';
+// 	}
+// 	effect.style.top =y+'px';
+// 	body.appendChild(effect);
+// 	setTimeout(function(){
+// 				effect.remove();
+// 			},300);
+// 		});
 
 var hreflist=["https://github.com/Abhishekmishra-17/eb3_Mind-benders_Circular-queue-using-array",
 "https://github.com/Abhishekmishra-17/Phenol-formaldehyde-Resin-Urea-formaldehyde-resin",
