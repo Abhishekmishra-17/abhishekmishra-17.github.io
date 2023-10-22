@@ -250,3 +250,14 @@ images.addEventListener('click',function(event){
 	});
 
 });
+$(document).ready(function() {
+  const url = window.location.href;
+  const parts = url.split("#")[1];
+  const active = document.querySelector('.active');
+  active.classList.remove('active');
+  // Get the element that you want to make active
+  const element = document.querySelector('.'+parts);
+  // Add the 'active' class to the element
+  element.classList.add('active');
+//   console.log(parts);
+});
