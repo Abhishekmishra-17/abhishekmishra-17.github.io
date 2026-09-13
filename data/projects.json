@@ -1,0 +1,86 @@
+[
+	{
+		"category": "web-design",
+		"title": "Web Design",
+		"image": "images/webDesign/qua.JPG",
+		"link": "http://ebootathon.com/labs/beta/csit/DS/exp4/simulation.html",
+		"repo": "https://github.com/Abhishekmishra-17/eb3_Mind-benders_Circular-queue-using-array"
+	},
+	{
+		"category": "web-design",
+		"title": "Web Design",
+		"image": "images/webDesign/phenol.jpeg",
+		"link": "http://ebootathon.com/labs/beta/chemistry/EngineeringChemistryLab/exp1/simulation.html",
+		"repo": "https://github.com/Abhishekmishra-17/Phenol-formaldehyde-Resin-Urea-formaldehyde-resin"
+	},
+	{
+		"category": "photography",
+		"title": "Photography",
+		"image": "images/portfolio/collage.jpg",
+		"link": "imagegrid.html",
+		"repo": "imagegrid.html"
+	},
+	{
+		"category": "web-design",
+		"title": "Web Design",
+		"image": "images/webDesign/queua.jpeg",
+		"link": "http://ebootathon.com/labs/beta/csit/DS/exp2/",
+		"repo": "https://github.com/Abhishekmishra-17/eb3_Mind-benders_queue-using-array"
+	},
+	{
+		"category": "web-design",
+		"title": "Web Design",
+		"image": "images/webDesign/company.JPG",
+		"link": "",
+		"repo": "https://github.com/Abhishekmishra-17/DUDO"
+	},
+	{
+		"category": "web-design",
+		"title": "Web Design",
+		"image": "images/webDesign/ACMS_web.png",
+		"link": "https://vcddxm6utnzciqbmzqzvwq.on.drv.tw/www.AccidentMS.com/",
+		"repo": "https://github.com/Abhishekmishra-17/1st-project-accident-control-management-system"
+	},
+	{
+		"category": "web-design",
+		"title": "Web Design",
+		"image": "images/webDesign/qul.jpeg",
+		"link": "http://ebootathon.com/labs/beta/csit/DS/exp3/",
+		"repo": "https://github.com/Abhishekmishra-17/eb3_Mind-Benders_Queue-using-Linked-List"
+	},
+	{
+		"category": "ml",
+		"title": "Machine Learning",
+		"image": "images/ml/Stock.JPG",
+		"link": "",
+		"repo": "https://github.com/Abhishekmishra-17/Stock-market-price-analysis"
+	},
+	{
+		"category": "ml",
+		"title": "Machine Learning",
+		"image": "images/ml/faceattendance.JPG",
+		"link": "",
+		"repo": "https://github.com/Abhishekmishra-17/Attendance-system-using-face-recognition-onscaling-temperature"
+	},
+	{
+		"category": "ml",
+		"title": "Machine Learning",
+		"image": "images/ml/platenumber.jpg",
+		"link": "",
+		"repo": "https://github.com/Abhishekmishra-17/Vehicle-plate-number-detection-using-python"
+	},
+	{
+		"category": "ml",
+		"title": "Machine Learning",
+		"image": "images/ml/hand-emoji.png",
+		"link": "",
+		"repo": "https://github.com/Abhishekmishra-17/hand-emojinator-using-python"
+	},
+	{
+		"category": "ml",
+		"title": "Machine Learning",
+		"image": "images/ml/devnagri.JPG",
+		"link": "",
+		"repo": "https://github.com/Abhishekmishra-17/-Hindi-Devanagari-Handwriting-recognition-using-python"
+	}
+]
