@@ -46,6 +46,7 @@
 				<button class="admin-nav-btn" data-target="panel-education">Education</button>
 				<button class="admin-nav-btn" data-target="panel-skills">Skills</button>
 				<button class="admin-nav-btn" data-target="panel-projects">Projects</button>
+				<button class="admin-nav-btn" data-target="panel-gallery">Photography Gallery</button>
 				<button class="admin-nav-btn" data-target="panel-blogs">Blog posts</button>
 				<button class="admin-nav-btn" data-target="panel-images">Site images</button>
 				<button id="disconnect-btn" class="admin-nav-btn admin-nav-disconnect">Disconnect</button>
@@ -98,9 +99,22 @@
 
 				<section id="panel-projects" class="admin-panel" hidden>
 					<h2>Projects &amp; portfolio images</h2>
+					<p class="hint">Category accepts any text &mdash; type an existing one or a brand new one (e.g. "portfolio"). New categories automatically appear as filter buttons on the live site.</p>
+					<datalist id="category-options"></datalist>
 					<div id="projects-list" class="entry-list"></div>
 					<button class="btn-secondary add-btn" data-collection="projects">+ Add project</button>
 					<button class="btn-primary save-btn" data-collection="projects">Save projects</button>
+				</section>
+
+				<section id="panel-gallery" class="admin-panel" hidden>
+					<h2>Photography Gallery</h2>
+					<p class="hint">These are the individual photos shown on the full gallery page (<code>imagegrid.html</code>), linked from the "Photography" project card. Upload one or more photos at once; removing a photo here only stops it from appearing in the gallery, it doesn't delete the file.</p>
+					<div class="field">
+						<label>Add photos</label>
+						<input id="gallery-upload" type="file" accept="image/*" multiple>
+					</div>
+					<div id="gallery-list" class="gallery-grid"></div>
+					<button class="btn-primary save-btn" data-collection="gallery">Save gallery</button>
 				</section>
 
 				<section id="panel-blogs" class="admin-panel" hidden>

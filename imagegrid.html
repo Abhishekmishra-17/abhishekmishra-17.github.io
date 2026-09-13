@@ -133,14 +133,46 @@ function four() {
 }
 var header = document.getElementById("myHeader");
 var btns = header.getElementsByClassName("btn");
-for (var ak= 0; ak< btns.length; ak++) {
-  btns[ak].addEventListener("click", function() {
+for (var ak2 = 0; ak2 < btns.length; ak2++) {
+  btns[ak2].addEventListener("click", function() {
     var current = document.getElementsByClassName("active");
     current[0].className = current[0].className.replace(" active", "");
     this.className += " active";
   });
 }
+
+// Rebuild the grid from admin-managed data when available; "elements" above
+// is a live HTMLCollection, so the column toggle keeps working either way.
+fetch("data/gallery.json", { cache: "no-cache" })
+  .then(function (res) {
+    if (!res.ok) { throw new Error("Failed to load gallery"); }
+    return res.json();
+  })
+  .then(function (images) {
+    if (!images || !images.length) { return; }
+    var row = document.querySelector(".row");
+    row.innerHTML = "";
+    var columnCount = 4;
+    var columns = [];
+    for (var c = 0; c < columnCount; c++) {
+      var col = document.createElement("div");
+      col.className = "column";
+      row.appendChild(col);
+      columns.push(col);
+    }
+    images.forEach(function (src, index) {
+      var img = document.createElement("img");
+      img.src = src;
+      img.style.width = "100%";
+      columns[index % columnCount].appendChild(img);
+    });
+  })
+  .catch(function (error) {
+    console.warn("Gallery hydration skipped, using static fallback content.", error);
+  });
 </script>
+
+
 
 </body>
 </html>
