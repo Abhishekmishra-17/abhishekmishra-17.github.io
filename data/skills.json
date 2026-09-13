@@ -1,0 +1,6 @@
+[
+	{ "name": "Python", "percent": 86 },
+	{ "name": "Machine Learning", "percent": 70 },
+	{ "name": "AWS", "percent": 60 },
+	{ "name": "Front-end", "percent": 55 }
+]

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Admin · Abhishek Mishra</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="robots" content="noindex, nofollow">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="admin.css">
+</head>
+<body>
+	<header class="admin-header">
+		<div class="admin-header-inner">
+			<a class="admin-logo" href="../index.html">Abhishek<span>.</span> <small>Admin</small></a>
+			<div id="connection-status" class="connection-status">Not connected</div>
+		</div>
+	</header>
+
+	<main class="admin-main">
+		<!-- Auth gate -->
+		<section id="auth-gate" class="panel">
+			<h1>Connect to GitHub</h1>
+			<p class="hint">
+				This panel edits <code>Abhishekmishra-17/abhishekmishra-17.github.io</code> directly through GitHub's API.
+				There is no separate password — GitHub itself decides who is allowed to write, based on the token you provide.
+				Create a <strong>fine-grained personal access token</strong> scoped to only this repository with
+				<strong>Contents: Read and write</strong> permission, then paste it below. Treat it like a password.
+			</p>
+			<div class="field">
+				<label for="token-input">GitHub personal access token</label>
+				<input id="token-input" type="password" autocomplete="off" placeholder="github_pat_..." />
+			</div>
+			<label class="checkbox-field">
+				<input id="remember-token" type="checkbox">
+				Remember this token on this device (otherwise it is cleared when you close the tab)
+			</label>
+			<button id="connect-btn" class="btn-primary">Connect</button>
+			<p id="auth-error" class="error-text" hidden></p>
+		</section>
+
+		<!-- Admin workspace, shown once connected -->
+		<section id="admin-workspace" class="admin-workspace" hidden>
+			<nav class="admin-nav">
+				<button class="admin-nav-btn active" data-target="panel-profile">Profile &amp; Resume</button>
+				<button class="admin-nav-btn" data-target="panel-experience">Experience</button>
+				<button class="admin-nav-btn" data-target="panel-education">Education</button>
+				<button class="admin-nav-btn" data-target="panel-skills">Skills</button>
+				<button class="admin-nav-btn" data-target="panel-projects">Projects</button>
+				<button class="admin-nav-btn" data-target="panel-blogs">Blog posts</button>
+				<button class="admin-nav-btn" data-target="panel-images">Site images</button>
+				<button id="disconnect-btn" class="admin-nav-btn admin-nav-disconnect">Disconnect</button>
+			</nav>
+
+			<div class="admin-content">
+				<div id="status-banner" class="status-banner" hidden></div>
+
+				<section id="panel-profile" class="admin-panel">
+					<h2>Profile &amp; Resume</h2>
+					<div class="field">
+						<label>Profile photo</label>
+						<div class="upload-row">
+							<img id="profile-preview" class="preview-thumb" alt="Profile preview">
+							<input id="profile-image-upload" type="file" accept="image/*">
+						</div>
+						<input id="profile-image-path" type="text" placeholder="images/profile-images.jpg">
+					</div>
+					<div class="field">
+						<label>Resume (PDF)</label>
+						<div class="upload-row">
+							<a id="resume-current-link" href="#" target="_blank">Current resume</a>
+							<input id="resume-upload" type="file" accept="application/pdf">
+						</div>
+						<input id="resume-path" type="text" placeholder="docs/AbhishekMishraResume.pdf">
+					</div>
+					<button class="btn-primary save-btn" data-collection="profile">Save profile</button>
+				</section>
+
+				<section id="panel-experience" class="admin-panel" hidden>
+					<h2>Experience</h2>
+					<div id="experience-list" class="entry-list"></div>
+					<button class="btn-secondary add-btn" data-collection="experience">+ Add experience</button>
+					<button class="btn-primary save-btn" data-collection="experience">Save experience</button>
+				</section>
+
+				<section id="panel-education" class="admin-panel" hidden>
+					<h2>Education</h2>
+					<div id="education-list" class="entry-list"></div>
+					<button class="btn-secondary add-btn" data-collection="education">+ Add education</button>
+					<button class="btn-primary save-btn" data-collection="education">Save education</button>
+				</section>
+
+				<section id="panel-skills" class="admin-panel" hidden>
+					<h2>Skills</h2>
+					<div id="skills-list-admin" class="entry-list"></div>
+					<button class="btn-secondary add-btn" data-collection="skills">+ Add skill</button>
+					<button class="btn-primary save-btn" data-collection="skills">Save skills</button>
+				</section>
+
+				<section id="panel-projects" class="admin-panel" hidden>
+					<h2>Projects &amp; portfolio images</h2>
+					<div id="projects-list" class="entry-list"></div>
+					<button class="btn-secondary add-btn" data-collection="projects">+ Add project</button>
+					<button class="btn-primary save-btn" data-collection="projects">Save projects</button>
+				</section>
+
+				<section id="panel-blogs" class="admin-panel" hidden>
+					<h2>Blog posts</h2>
+					<div id="blogs-list" class="entry-list"></div>
+					<button class="btn-secondary add-btn" data-collection="blogs">+ Add blog post</button>
+					<button class="btn-primary save-btn" data-collection="blogs">Save blog posts</button>
+				</section>
+
+				<section id="panel-images" class="admin-panel" hidden>
+					<h2>Site images</h2>
+					<p class="hint">Upload any general-purpose image for the site. Copy the resulting path into a project or blog post's image field above.</p>
+					<div class="field">
+						<input id="site-image-upload" type="file" accept="image/*">
+					</div>
+					<div class="field">
+						<label>Uploaded path</label>
+						<input id="site-image-result" type="text" readonly placeholder="images/site/your-file.jpg">
+					</div>
+				</section>
+			</div>
+		</section>
+	</main>
+
+	<script src="admin.js"></script>
+</body>
+</html>

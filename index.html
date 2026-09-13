@@ -5,7 +5,6 @@
 	<title>Abhishek Mishra</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/pink.css">
 	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
 	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
@@ -19,6 +18,7 @@
 
 	  gtag('config', 'G-7ZSRSREVP0');
 	</script>
+	<noscript><style>.reveal{opacity:1!important; transform:none!important;}</style></noscript>
 </head>
 <body>
 	<!-- Preloader Start -->
@@ -69,15 +69,19 @@
 			<section class="home section active" id="home">
 				<div class="container">
 					<div class="intro">
-						<img src="images\profile-images.jpg" alt="Profile" class="shadow-dark">
+						<img src="images\profile-images.jpg" alt="Profile" class="shadow-dark" id="profile-image">
 						<h1>Abhishek Mishra</h1>
 						<p><span id="typed"></span></p>
 						<div class="social-link">
-							<a href="https://github.com/Abhishekmishra-17"><i class="fa fa-github"></i></a>
+							<a href="https://github.com/Abhishekmishra-17" aria-label="Visit Abhishek's GitHub profile"><i class="fa fa-github" aria-hidden="true"></i></a>
 							<!-- <a href="#"><i class="fa fa-facebook-f"></i></a> -->
-							<a href="https://medium.com/@mishraabhi8924"><i class="fab fa-medium"></i></a>
-							<a href="https://www.linkedin.com/in/abhishek-mishra-377055193/"><i class="fa fa-linkedin"></i></a>
-							<a href="https://www.youtube.com/channel/UCAShqiR0RfgB997CwwK42sg"><i class="fa fa-youtube-play"></i></a>
+							<a href="https://medium.com/@mishraabhi8924" aria-label="Read Abhishek's articles on Medium"><i class="fab fa-medium" aria-hidden="true"></i></a>
+							<a href="https://www.linkedin.com/in/abhishek-mishra-377055193/" aria-label="Visit Abhishek's LinkedIn profile"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+							<a href="https://www.youtube.com/channel/UCAShqiR0RfgB997CwwK42sg" aria-label="Visit Abhishek's YouTube channel"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+						</div>
+						<div class="hero-actions">
+							<a href="#portfolio" class="btn">Explore work <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+							<a href="docs/AbhishekMishraResume.pdf" class="hero-resume" target="_blank">Resume <i class="fa fa-external-link" aria-hidden="true"></i></a>
 						</div>
 					</div>
 				</div>
@@ -137,7 +141,7 @@
 									</div>
 								</div>
 								<div class="skills padd-15">
-									<div class="row">
+									<div class="row" id="skills-list">
 										<div class="skill-item padd-15">
 											<h5>Python</h5>
 											<div class="progress">
@@ -174,7 +178,7 @@
 									<h3 class="title">Education</h3>
 									<div class="row">
 										<div class="timeline-box padd-15">
-											<div class="timeline shadow-dark">
+											<div class="timeline shadow-dark" id="education-timeline">
 												<div class="timeline-item">
 													<div class="circle-dot"></div>
 													<h6 class="timeline-date">
@@ -209,7 +213,7 @@
 									<h3 class="title">Experience</h3>
 									<div class="row">
 										<div class="timeline-box padd-15">
-											<div class="timeline shadow-dark">
+											<div class="timeline shadow-dark" id="experience-timeline">
 												<div class="timeline-item">
 													<div class="circle-dot"></div>
 													<h6 class="timeline-date">
@@ -340,8 +344,8 @@
 							<button type="button" data-filter="ml">Machine Learning</button>
 						</div>
 					</div>
-					<div class="row portfolio-items">
-						<div class="portfolio-item padd-15" data-category="web-design">
+					<div class="row portfolio-items" id="portfolio-items">
+<div class="portfolio-item padd-15" data-category="web-design" data-repo="https://github.com/Abhishekmishra-17/eb3_Mind-benders_Circular-queue-using-array">
 							<div class="portfolio-item-inner shadow-dark">
 								<div class="portfolio-img">
 									<img src="images\webDesign\qua.JPG" alt="portfolio-img">
@@ -351,12 +355,12 @@
 										Web Design
 									</h4>
 									<div class="icon">
-										<a href="http://ebootathon.com/labs/beta/csit/DS/exp4/simulation.html" target="_blank"><i class="fa fa-search"></i></a>
+										<a href="http://ebootathon.com/labs/beta/csit/DS/exp4/simulation.html" target="_blank" aria-label="Open web design project"><i class="fa fa-search" aria-hidden="true"></i></a>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="portfolio-item padd-15" data-category="web-design">
+<div class="portfolio-item padd-15" data-category="web-design" data-repo="https://github.com/Abhishekmishra-17/Phenol-formaldehyde-Resin-Urea-formaldehyde-resin">
 							<div class="portfolio-item-inner shadow-dark">
 								<div class="portfolio-img">
 									<img src="images\webDesign\phenol.jpeg" alt="portfolio-img">
@@ -366,13 +370,13 @@
 										Web Design
 									</h4>
 									<div class="icon">
-										<a href="http://ebootathon.com/labs/beta/chemistry/EngineeringChemistryLab/exp1/simulation.html" target="_blank">
+										<a href="http://ebootathon.com/labs/beta/chemistry/EngineeringChemistryLab/exp1/simulation.html" target="_blank" aria-label="Open web design project">
 										<i class="fa fa-search"></i></a>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="portfolio-item padd-15" data-category="photography">
+<div class="portfolio-item padd-15" data-category="photography" data-repo="imagegrid.html">
 							<div class="portfolio-item-inner shadow-dark">
 								<div class="portfolio-img">
 									<img src="images\portfolio/collage.jpg" alt="portfolio-img">
@@ -382,13 +386,13 @@
 										Photography
 									</h4>
 									<div class="icon">
-										<a href="/imagegrid.html" target="_blank">
+										<a href="/imagegrid.html" target="_blank" aria-label="Open photography gallery">
 										<i class="fa fa-search"></i></a>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="portfolio-item padd-15" data-category="web-design">
+<div class="portfolio-item padd-15" data-category="web-design" data-repo="https://github.com/Abhishekmishra-17/eb3_Mind-benders_queue-using-array">
 							<div class="portfolio-item-inner shadow-dark">
 								<div class="portfolio-img">
 									<img src="images\webDesign\queua.jpeg" alt="web-design">
@@ -398,13 +402,13 @@
 										Web Design
 									</h4>
 									<div class="icon">
-										<a href="http://ebootathon.com/labs/beta/csit/DS/exp2/" target="_blank">
+										<a href="http://ebootathon.com/labs/beta/csit/DS/exp2/" target="_blank" aria-label="Open web design project">
 										<i class="fa fa-search"></i></a>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="portfolio-item padd-15" data-category="web-design">
+<div class="portfolio-item padd-15" data-category="web-design" data-repo="https://github.com/Abhishekmishra-17/DUDO">
 							<div class="portfolio-item-inner shadow-dark">
 								<div class="portfolio-img">
 									<img src="images\webDesign\company.JPG" alt="web-design">
@@ -419,7 +423,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="portfolio-item padd-15" data-category="web-design">
+<div class="portfolio-item padd-15" data-category="web-design" data-repo="https://github.com/Abhishekmishra-17/1st-project-accident-control-management-system">
 							<div class="portfolio-item-inner shadow-dark">
 								<div class="portfolio-img">
 									<img src="images\webDesign\ACMS_web.png" alt="web-design">
@@ -429,13 +433,13 @@
 										Web Design
 									</h4>
 									<div class="icon">
-										<a href="https://vcddxm6utnzciqbmzqzvwq.on.drv.tw/www.AccidentMS.com/" target="_blank">
+										<a href="https://vcddxm6utnzciqbmzqzvwq.on.drv.tw/www.AccidentMS.com/" target="_blank" aria-label="Open accident management project">
 										<i class="fa fa-search"></i></a>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="portfolio-item padd-15" data-category="web-design">
+<div class="portfolio-item padd-15" data-category="web-design" data-repo="https://github.com/Abhishekmishra-17/eb3_Mind-Benders_Queue-using-Linked-List">
 							<div class="portfolio-item-inner shadow-dark">
 								<div class="portfolio-img">
 									<img src="images\webDesign\qul.jpeg" alt="web-design">
@@ -445,13 +449,13 @@
 										Web Design
 									</h4>
 									<div class="icon">
-										<a href="http://ebootathon.com/labs/beta/csit/DS/exp3/" target="_blank">
+										<a href="http://ebootathon.com/labs/beta/csit/DS/exp3/" target="_blank" aria-label="Open web design project">
 										<i class="fa fa-search"></i></a>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="portfolio-item padd-15" data-category="ml">
+<div class="portfolio-item padd-15" data-category="ml" data-repo="https://github.com/Abhishekmishra-17/Stock-market-price-analysis">
 							<div class="portfolio-item-inner shadow-dark">
 								<div class="portfolio-img">
 									<img src="images\ml\Stock.JPG" alt="portfolio-img">
@@ -466,7 +470,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="portfolio-item padd-15" data-category="ml">
+<div class="portfolio-item padd-15" data-category="ml" data-repo="https://github.com/Abhishekmishra-17/Attendance-system-using-face-recognition-onscaling-temperature">
 							<div class="portfolio-item-inner shadow-dark">
 								<div class="portfolio-img">
 									<img src="images\ml\faceattendance.JPG" alt="portfolio-img">
@@ -481,7 +485,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="portfolio-item padd-15" data-category="ml">
+<div class="portfolio-item padd-15" data-category="ml" data-repo="https://github.com/Abhishekmishra-17/Vehicle-plate-number-detection-using-python">
 							<div class="portfolio-item-inner shadow-dark">
 								<div class="portfolio-img">
 									<img src="images\ml\platenumber.jpg" alt="portfolio-img">
@@ -496,7 +500,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="portfolio-item padd-15" data-category="ml">
+<div class="portfolio-item padd-15" data-category="ml" data-repo="https://github.com/Abhishekmishra-17/hand-emojinator-using-python">
 							<div class="portfolio-item-inner shadow-dark">
 								<div class="portfolio-img">
 									<img src="images\ml\hand-emoji.png" alt="portfolio-img">
@@ -511,7 +515,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="portfolio-item padd-15" data-category="ml">
+<div class="portfolio-item padd-15" data-category="ml" data-repo="https://github.com/Abhishekmishra-17/-Hindi-Devanagari-Handwriting-recognition-using-python">
 							<div class="portfolio-item-inner shadow-dark">
 								<div class="portfolio-img">
 									<img src="images\ml\devnagri.JPG" alt="portfolio-img">
@@ -536,7 +540,7 @@
 							<h2>Blogs</h2>
 						</div>
 					</div>
-					<div class="row">
+					<div class="row" id="blog-items">
 						<div class="blog-item padd-15">
 							<div class="blog-item-inner shadow-dark">
 								<a href="https://medium.com/@mishraabhi8924/how-to-track-our-python-script-files-f56fe1228d3f">
@@ -775,6 +779,9 @@
 			</div>
 		</div>
 	</div>
+<script src="js/content.js">
+	
+</script>
 <script src="js/javascript.js">
 	
 </script>
