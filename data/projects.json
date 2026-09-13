@@ -82,5 +82,12 @@
 		"image": "images/ml/devnagri.JPG",
 		"link": "",
 		"repo": "https://github.com/Abhishekmishra-17/-Hindi-Devanagari-Handwriting-recognition-using-python"
+	},
+	{
+		"category": "hello",
+		"title": "hello",
+		"image": "",
+		"link": "",
+		"repo": ""
 	}
 ]
