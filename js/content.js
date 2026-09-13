@@ -72,6 +72,31 @@
 		}).join("");
 	}
 
+	var CATEGORY_LABELS = { "web-design": "Web Design", photography: "Photography", ml: "Machine Learning" };
+	function humanizeCategory(slug) {
+		if (CATEGORY_LABELS[slug]) {
+			return CATEGORY_LABELS[slug];
+		}
+		return String(slug).replace(/[-_]+/g, " ").replace(/\b\w/g, function (ch) { return ch.toUpperCase(); });
+	}
+
+	function renderPortfolioFilters(container, items) {
+		if (!container || !items || !items.length) {
+			return;
+		}
+		var categories = [];
+		items.forEach(function (item) {
+			if (item.category && categories.indexOf(item.category) === -1) {
+				categories.push(item.category);
+			}
+		});
+		var buttons = ['<button type="button" class="active" data-filter="all">All</button>'];
+		categories.forEach(function (category) {
+			buttons.push('<button type="button" data-filter="' + escapeHtml(category) + '">' + escapeHtml(humanizeCategory(category)) + "</button>");
+		});
+		container.innerHTML = buttons.join("");
+	}
+
 	function renderBlogs(container, items) {
 		if (!container || !items || !items.length) {
 			return;
@@ -126,9 +151,16 @@
 					profileImg.setAttribute("src", data.profile.profileImage);
 				}
 			}
+			if (data.profile && data.profile.resumePath) {
+				var heroResumeLink = document.getElementById("hero-resume-link");
+				if (heroResumeLink) {
+					heroResumeLink.setAttribute("href", data.profile.resumePath);
+				}
+			}
 			renderTimeline(document.getElementById("experience-timeline"), data.experience);
 			renderTimeline(document.getElementById("education-timeline"), data.education);
 			renderSkills(document.getElementById("skills-list"), data.skills);
+			renderPortfolioFilters(document.querySelector(".portfolio-filter"), data.projects);
 			renderProjects(document.getElementById("portfolio-items"), data.projects);
 			renderBlogs(document.getElementById("blog-items"), data.blogs);
 		});

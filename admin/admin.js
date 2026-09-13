@@ -8,6 +8,7 @@
 		education: "data/education.json",
 		skills: "data/skills.json",
 		projects: "data/projects.json",
+		gallery: "data/gallery.json",
 		blogs: "data/blogs.json"
 	};
 	var SESSION_KEY = "admin_gh_token";
@@ -87,7 +88,12 @@
 	function saveJsonCollection(key) {
 		var path = DATA_PATHS[key];
 		var pretty = JSON.stringify(state.data[key], null, "\t") + "\n";
-		return ghPutFile(path, utf8ToBase64(pretty), "Update " + key + " via admin panel", state.sha[key]).then(function (result) {
+		// Re-fetch the current sha right before writing so a save can never race
+		// ahead of the initial load (or a change made since), which is what
+		// causes GitHub's "sha wasn't supplied" rejection on existing files.
+		return ghGetFile(path).then(function (existing) {
+			return ghPutFile(path, utf8ToBase64(pretty), "Update " + key + " via admin panel", existing.sha);
+		}).then(function (result) {
 			state.sha[key] = result.content.sha;
 		});
 	}
@@ -198,8 +204,14 @@
 	});
 
 	// ---- Load collections ----
+	function setWorkspaceInteractive(enabled) {
+		Array.prototype.forEach.call(document.querySelectorAll(".save-btn, .add-btn"), function (btn) {
+			btn.disabled = !enabled;
+		});
+	}
 	function loadAllCollections() {
 		showStatus("Loading content\u2026", "loading");
+		setWorkspaceInteractive(false);
 		var keys = Object.keys(DATA_PATHS);
 		return Promise.all(keys.map(function (key) {
 			return ghGetFile(DATA_PATHS[key]).then(function (file) {
@@ -212,8 +224,11 @@
 			renderTimelineList("education", el("education-list"));
 			renderSkillsList();
 			renderProjectsList();
+			refreshCategoryOptions();
+			renderGalleryList();
 			renderBlogsList();
 			statusBanner.hidden = true;
+			setWorkspaceInteractive(true);
 		});
 	}
 
@@ -297,10 +312,25 @@
 	}
 
 	// ---- Projects ----
+	// A few existing categories keep their original folder names for backward
+	// compatibility; any new category the admin types gets its own images/<slug> folder.
+	var LEGACY_CATEGORY_FOLDERS = { photography: "images/portfolio", ml: "images/ml", "web-design": "images/webDesign" };
 	function projectFolderFor(category) {
-		if (category === "photography") { return "images/portfolio"; }
-		if (category === "ml") { return "images/ml"; }
-		return "images/webDesign";
+		if (LEGACY_CATEGORY_FOLDERS[category]) { return LEGACY_CATEGORY_FOLDERS[category]; }
+		var slug = String(category || "misc").trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "misc";
+		return "images/" + slug;
+	}
+	function refreshCategoryOptions() {
+		var datalist = el("category-options");
+		if (!datalist) { return; }
+		var seen = [];
+		(state.data.projects || []).forEach(function (item) {
+			if (item.category && seen.indexOf(item.category) === -1) { seen.push(item.category); }
+		});
+		seen.sort();
+		datalist.innerHTML = seen.map(function (category) {
+			return '<option value="' + escapeAttr(category) + '"></option>';
+		}).join("");
 	}
 	function renderProjectsList() {
 		var container = el("projects-list");
@@ -311,11 +341,7 @@
 			card.innerHTML =
 				'<div class="entry-card-header"><span>Project ' + (index + 1) + '</span><button type="button" class="remove-entry-btn">Remove</button></div>' +
 				'<div class="row-3">' +
-					'<div class="field"><label>Category</label><select data-field="category">' +
-						'<option value="web-design">Web Design</option>' +
-						'<option value="photography">Photography</option>' +
-						'<option value="ml">Machine Learning</option>' +
-					"</select></div>" +
+					'<div class="field"><label>Category</label><input type="text" list="category-options" data-field="category" value="' + escapeAttr(item.category) + '" placeholder="e.g. portfolio"></div>' +
 					'<div class="field"><label>Title</label><input type="text" data-field="title" value="' + escapeAttr(item.title) + '"></div>' +
 					'<div class="field"><label>Overlay link (optional)</label><input type="text" data-field="link" value="' + escapeAttr(item.link) + '"></div>' +
 				"</div>" +
@@ -325,12 +351,14 @@
 					'<input type="file" accept="image/*" class="project-image-upload">' +
 				"</div>" +
 				'<input type="text" data-field="image" value="' + escapeAttr(item.image) + '"></div>';
-			card.querySelector('[data-field="category"]').value = item.category || "web-design";
 			Array.prototype.forEach.call(card.querySelectorAll("[data-field]"), function (input) {
 				input.addEventListener("input", function () {
 					item[this.dataset.field] = this.value;
 					if (this.dataset.field === "image") {
 						card.querySelector(".thumb-sm").src = "../" + this.value;
+					}
+					if (this.dataset.field === "category") {
+						refreshCategoryOptions();
 					}
 				});
 			});
@@ -350,6 +378,48 @@
 				renderProjectsList();
 			});
 			container.appendChild(card);
+		});
+	}
+
+	// ---- Photography gallery ----
+	function renderGalleryList() {
+		var container = el("gallery-list");
+		if (!container) { return; }
+		container.innerHTML = "";
+		(state.data.gallery || []).forEach(function (path, index) {
+			var thumb = document.createElement("div");
+			thumb.className = "gallery-thumb";
+			thumb.innerHTML =
+				'<img src="../' + escapeAttr(path) + '" alt="">' +
+				'<button type="button" class="gallery-remove-btn" title="Remove from gallery">\u00d7</button>';
+			thumb.querySelector(".gallery-remove-btn").addEventListener("click", function () {
+				state.data.gallery.splice(index, 1);
+				renderGalleryList();
+			});
+			container.appendChild(thumb);
+		});
+	}
+	var galleryUploadInput = el("gallery-upload");
+	if (galleryUploadInput) {
+		galleryUploadInput.addEventListener("change", function (event) {
+			var files = Array.prototype.slice.call(event.target.files || []);
+			if (!files.length) { return; }
+			showStatus("Uploading " + files.length + " photo(s)\u2026", "loading");
+			var uploads = files.reduce(function (chain, file) {
+				return chain.then(function () {
+					return uploadImage(file, "images/portfolio").then(function (path) {
+						state.data.gallery = state.data.gallery || [];
+						state.data.gallery.push(path);
+					});
+				});
+			}, Promise.resolve());
+			uploads.then(function () {
+				renderGalleryList();
+				galleryUploadInput.value = "";
+				showStatus("Photos uploaded. Click Save gallery to publish.", "success");
+			}).catch(function (error) {
+				showStatus(error.message, "error");
+			});
 		});
 	}
 
@@ -416,8 +486,9 @@
 				state.data.skills.push({ name: "", percent: 50 });
 				renderSkillsList();
 			} else if (key === "projects") {
-				state.data.projects.push({ category: "web-design", title: "", image: "", link: "", repo: "" });
+				state.data.projects.push({ category: "", title: "", image: "", link: "", repo: "" });
 				renderProjectsList();
+				refreshCategoryOptions();
 			} else if (key === "blogs") {
 				state.data.blogs.push({ title: "", description: "", tags: [], date: "", image: "", link: "" });
 				renderBlogsList();
