@@ -1,4 +1,10 @@
 {
 	"profileImage": "images/profile-images.jpg",
-	"resumePath": "docs/mishra_abhishek_resume.pdf"
+	"resumePath": "docs/mishra_abhishek_resume.pdf",
+	"personalInfo": [
+		{
+			"label": "Freelance",
+			"value": "Available"
+		}
+	]
 }
