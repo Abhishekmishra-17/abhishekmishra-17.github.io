@@ -220,6 +220,7 @@
 			});
 		})).then(function () {
 			renderProfile();
+			renderPersonalInfoList();
 			renderTimelineList("experience", el("experience-list"));
 			renderTimelineList("education", el("education-list"));
 			renderSkillsList();
@@ -239,6 +240,40 @@
 		el("resume-path").value = profile.resumePath || "";
 		el("profile-preview").src = "../" + (profile.profileImage || "");
 		el("resume-current-link").href = "../" + (profile.resumePath || "");
+	}
+
+	// ---- Personal info (About section list) ----
+	function renderPersonalInfoList() {
+		var container = el("personal-info-list-admin");
+		if (!container) { return; }
+		state.data.profile = state.data.profile || {};
+		state.data.profile.personalInfo = state.data.profile.personalInfo || [];
+		container.innerHTML = "";
+		state.data.profile.personalInfo.forEach(function (item, index) {
+			var card = document.createElement("div");
+			card.className = "entry-card";
+			card.innerHTML =
+				'<div class="entry-card-header"><span>Info ' + (index + 1) + '</span><button type="button" class="remove-entry-btn">Remove</button></div>' +
+				'<div class="row-2">' +
+					'<div class="field"><label>Label</label><input type="text" data-field="label" value="' + escapeAttr(item.label) + '"></div>' +
+					'<div class="field"><label>Value</label><input type="text" data-field="value" value="' + escapeAttr(item.value) + '"></div>' +
+				"</div>" +
+				'<div class="field"><label>Link (optional, e.g. mailto: or https://)</label><input type="text" data-field="link" value="' + escapeAttr(item.link) + '"></div>';
+			Array.prototype.forEach.call(card.querySelectorAll("[data-field]"), function (input) {
+				input.addEventListener("input", function () {
+					if (this.dataset.field === "link" && !this.value.trim()) {
+						delete item.link;
+					} else {
+						item[this.dataset.field] = this.value;
+					}
+				});
+			});
+			card.querySelector(".remove-entry-btn").addEventListener("click", function () {
+				state.data.profile.personalInfo.splice(index, 1);
+				renderPersonalInfoList();
+			});
+			container.appendChild(card);
+		});
 	}
 	el("profile-image-upload").addEventListener("change", function (event) {
 		var file = event.target.files[0];
@@ -485,6 +520,11 @@
 			} else if (key === "skills") {
 				state.data.skills.push({ name: "", percent: 50 });
 				renderSkillsList();
+			} else if (key === "personalInfo") {
+				state.data.profile = state.data.profile || {};
+				state.data.profile.personalInfo = state.data.profile.personalInfo || [];
+				state.data.profile.personalInfo.push({ label: "", value: "" });
+				renderPersonalInfoList();
 			} else if (key === "projects") {
 				state.data.projects.push({ category: "", title: "", image: "", link: "", repo: "" });
 				renderProjectsList();
@@ -504,10 +544,8 @@
 			button.disabled = true;
 			showStatus("Saving " + key + "\u2026", "loading");
 			if (key === "profile") {
-				state.data.profile = {
-					profileImage: el("profile-image-path").value.trim(),
-					resumePath: el("resume-path").value.trim()
-				};
+				state.data.profile.profileImage = el("profile-image-path").value.trim();
+				state.data.profile.resumePath = el("resume-path").value.trim();
 			}
 			saveJsonCollection(key).then(function () {
 				showStatus("Saved. GitHub Pages will rebuild shortly.", "success");

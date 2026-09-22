@@ -1,10 +1,23 @@
 {
 	"profileImage": "images/profile-images.jpg",
+<<<<<<< HEAD
 	"resumePath": "docs/mishra_abhishek_resume.pdf",
 	"personalInfo": [
 		{
 			"label": "Freelance",
 			"value": "Available"
 		}
+=======
+	"resumePath": "docs/AbhishekMishraResume.pdf",
+	"personalInfo": [
+		{ "label": "Birthday", "value": "18th July 2001" },
+		{ "label": "Age", "value": "25" },
+		{ "label": "Website", "value": "Abhishek Mishra", "link": "https://abhishekmishra-17.github.io/" },
+		{ "label": "Email", "value": "Akm171216@gmail.com", "link": "mailto:Akm171216@gmail.com" },
+		{ "label": "Degree", "value": "B.Tech" },
+		{ "label": "Phone", "value": "+91 8874036548" },
+		{ "label": "City", "value": "Basti" },
+		{ "label": "Freelance", "value": "Available" }
+>>>>>>> Update-1
 	]
 }

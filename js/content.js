@@ -32,6 +32,22 @@
 		}).join("");
 	}
 
+	function renderPersonalInfo(container, items) {
+		if (!container || !items || !items.length) {
+			return;
+		}
+		container.innerHTML = items.map(function (item) {
+			var value = item.link
+				? '<a href="' + escapeHtml(item.link) + '">' + escapeHtml(item.value) + "</a>"
+				: escapeHtml(item.value);
+			return (
+				'<div class="info-item padd-15">' +
+					"<p>" + escapeHtml(item.label) + ": <span>" + value + "</span></p>" +
+				"</div>"
+			);
+		}).join("");
+	}
+
 	function renderSkills(container, items) {
 		if (!container || !items || !items.length) {
 			return;
@@ -157,6 +173,7 @@
 					heroResumeLink.setAttribute("href", data.profile.resumePath);
 				}
 			}
+			renderPersonalInfo(document.getElementById("personal-info-list"), data.profile && data.profile.personalInfo);
 			renderTimeline(document.getElementById("experience-timeline"), data.experience);
 			renderTimeline(document.getElementById("education-timeline"), data.education);
 			renderSkills(document.getElementById("skills-list"), data.skills);
