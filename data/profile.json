@@ -1,13 +1,11 @@
 {
 	"profileImage": "images/profile-images.jpg",
-<<<<<<< HEAD
 	"resumePath": "docs/mishra_abhishek_resume.pdf",
 	"personalInfo": [
 		{
 			"label": "Freelance",
 			"value": "Available"
-		}
-=======
+		},
 	"resumePath": "docs/AbhishekMishraResume.pdf",
 	"personalInfo": [
 		{ "label": "Birthday", "value": "18th July 2001" },
@@ -18,6 +16,5 @@
 		{ "label": "Phone", "value": "+91 8874036548" },
 		{ "label": "City", "value": "Basti" },
 		{ "label": "Freelance", "value": "Available" }
->>>>>>> Update-1
 	]
 }
