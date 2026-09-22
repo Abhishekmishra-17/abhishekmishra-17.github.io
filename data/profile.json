@@ -5,7 +5,8 @@
 		{
 			"label": "Freelance",
 			"value": "Available"
-		},
+		}
+	],
 	"resumePath": "docs/AbhishekMishraResume.pdf",
 	"personalInfo": [
 		{ "label": "Birthday", "value": "18th July 2001" },
