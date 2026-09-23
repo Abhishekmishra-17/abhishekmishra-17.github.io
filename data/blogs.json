@@ -1,8 +1,11 @@
 [
 	{
 		"title": "How to track our Python script files.",
-		"description": "Today, Python is one of the popular languages in computer science. But do you think about how you track our Python scripts \u201cline by line\u201d...",
-		"tags": ["Python", "Code Tracing"],
+		"description": "Today, Python is one of the popular languages in computer science. But do you think about how you track our Python scripts “line by line”...",
+		"tags": [
+			"Python",
+			"Code Tracing"
+		],
 		"date": "19 May 2020",
 		"image": "images/blogs/img1.webp",
 		"link": "https://medium.com/@mishraabhi8924/how-to-track-our-python-script-files-f56fe1228d3f"
@@ -10,15 +13,21 @@
 	{
 		"title": "Access the Android camera from Python using OpenCV",
 		"description": "This blog is handy for those considering creating image processing applications using an Android camera as a carrier.",
-		"tags": ["Python", "Sensor"],
+		"tags": [
+			"Python",
+			"Sensor"
+		],
 		"date": "12 May 2021",
 		"image": "images/blogs/img2.webp",
 		"link": "https://medium.com/@mishraabhi8924/access-the-android-camera-to-python-using-opencv-3d5901f01f23"
 	},
 	{
-		"title": "Start \u201cJupyter Notebook\u201d and \u201cSpyder\u201d without installing \"Anaconda\"",
-		"description": "In general, everyone is using \u201cJupyter Notebook\u201d or \u201cSpyder\u201d IDLE, and they are advised to install \u201cAnaconda\u201d...",
-		"tags": ["Python", "Sensor"],
+		"title": "Start “Jupyter Notebook” and “Spyder” without installing \"Anaconda\"",
+		"description": "In general, everyone is using “Jupyter Notebook” or “Spyder” IDLE, and they are advised to install “Anaconda”...",
+		"tags": [
+			"Python",
+			"Sensor"
+		],
 		"date": "25 May 2020",
 		"image": "images/blogs/img1.webp",
 		"link": "https://medium.com/@mishraabhi8924/how-to-start-our-jupyter-notebook-and-spyder-without-installing-anaconda-acde99037dad"
@@ -26,7 +35,10 @@
 	{
 		"title": "Access Android GPS Location using Python",
 		"description": "This is helpful in accident-controlling systems, alert systems, notification systems, and real-time object positioning systems...",
-		"tags": ["Python", "Sensor"],
+		"tags": [
+			"Python",
+			"Sensor"
+		],
 		"date": "21 May 2021",
 		"image": "images/blogs/img2.webp",
 		"link": "https://medium.com/@mishraabhi8924/access-android-gps-location-using-python-63d044755995"
@@ -34,17 +46,49 @@
 	{
 		"title": "Monkey Patching in Python: A Powerful and Controversial Technique",
 		"description": "In the world of programming, there are moments when developers encounter limitations in the functionality of a library, framework, or even the language itself...",
-		"tags": ["Python", "Oops"],
+		"tags": [
+			"Python",
+			"Oops"
+		],
 		"date": "13 August 2023",
 		"image": "images/blogs/monkey.jpg",
 		"link": "https://mishraabhi8924.medium.com/monkey-patching-in-python-a-powerful-and-controversial-technique-8e6ce1679265"
 	},
 	{
-		"title": "Exploring the Simplicity and Power of Python\u2019s Match Case Statement",
+		"title": "Exploring the Simplicity and Power of Python’s Match Case Statement",
 		"description": "This is helpful in accident-controlling systems, alert systems, notification systems, and real-time object positioning systems...",
-		"tags": ["Python", "Conditional Statement"],
+		"tags": [
+			"Python",
+			"Conditional Statement"
+		],
 		"date": "15 August 2023",
 		"image": "images/blogs/python.jpg",
 		"link": "https://medium.com/@mishraabhi8924/exploring-the-simplicity-and-power-of-pythons-match-case-statement-edd5b82f42ed"
+	},
+	{
+		"title": "Understanding Python’s dict vs collections.defaultdict: A Comprehensive Guide",
+		"description": "Dictionaries are the beating heart of Python. Whether you’re building a configuration manager, processing JSON, counting word frequencies, or modeling...",
+		"tags": [
+			"Python",
+			"Dict",
+			"Default Dict"
+		],
+		"date": "09 May 2026",
+		"image": "images/blogs/mediu-dict-and-default-dict.png",
+		"link": "https://mishraabhi8924.medium.com/understanding-pythons-dict-vs-collections-defaultdict-a-comprehensive-guide-49089ffb2df2"
+	},
+	{
+		"title": "How to Bypass AWS Cognito Auth for Public APIs and Handle X-API-Key in Lambda",
+		"description": "A step-by-step guide to mixing public routes, Cognito-protected routes, and API-key routes on a single AWS API Gateway — using SAM and...",
+		"tags": [
+			"Python",
+			"Microservices",
+			"Python Programming",
+			"AWS",
+			"API"
+		],
+		"date": "11 May 2026",
+		"image": "images/blogs/medium-blog.png",
+		"link": "https://medium.com/@mishraabhi8924/how-to-bypass-aws-cognito-auth-for-public-apis-and-handle-x-api-key-in-lambda-baadadd6a62f"
 	}
 ]
