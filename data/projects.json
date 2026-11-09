@@ -82,5 +82,12 @@
 		"image": "images/ml/devnagri.JPG",
 		"link": "",
 		"repo": "https://github.com/Abhishekmishra-17/-Hindi-Devanagari-Handwriting-recognition-using-python"
+	},
+	{
+		"category": "web-design",
+		"title": "Web Design",
+		"image": "images/webDesign/screenshot-2026-09-27-141407.png",
+		"link": "https://www.anayagreens.in/",
+		"repo": "https://github.com/Abhishekmishra-17/anaya_green_latest"
 	}
 ]
