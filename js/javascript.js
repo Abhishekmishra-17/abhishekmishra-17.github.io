@@ -213,15 +213,60 @@ window.initSite = function initSite() {
 
 	contactForm = document.getElementById('contact-form');
 	sendBtn = document.getElementById('send-btn');
-	sendBtn.addEventListener('click',function(event){
+	const contactStatus = document.getElementById('contact-status');
+	function setContactStatus(message, isError) {
+		if (!contactStatus) {
+			return;
+		}
+		contactStatus.textContent = message;
+		contactStatus.classList.toggle('error', Boolean(isError));
+	}
+
+	contactForm.addEventListener('submit', async function(event){
 		event.preventDefault();
-		const name=encodeURIComponent(document.querySelector('input[name="name"]').value);
-		const email=encodeURIComponent(document.querySelector('input[name="email"]').value);
-		const subject=encodeURIComponent(document.querySelector('input[name="subject"]').value);
-		const message=encodeURIComponent(document.querySelector('textarea[name="message"]').value);
-		const mailtoLink = `mailto:akm171216@gmail.com?subject=${subject}&body=${message}%0A%0A%0AThanks,%0A${name}%0A${email}`;
-		window.open(mailtoLink,'_blank');
-		contactForm.reset()
+		if (!contactForm.reportValidity()) {
+			return;
+		}
+
+		const formData = new FormData(contactForm);
+		const payload = Object.fromEntries(formData.entries());
+		payload._subject = `Portfolio contact: ${payload.subject}`;
+		payload._replyto = payload.email;
+		sendBtn.disabled = true;
+		setContactStatus('Sending your message…');
+
+		try {
+			const response = await fetch('https://formsubmit.co/ajax/akm171216@gmail.com', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'Accept': 'application/json'
+				},
+				body: JSON.stringify(payload)
+			});
+			const responseText = await response.text();
+			let result;
+			try {
+				result = responseText ? JSON.parse(responseText) : {};
+			} catch {
+				throw new Error(`Email service returned an unexpected response (HTTP ${response.status}).`);
+			}
+			if (!response.ok || (result.success !== true && result.success !== 'true')) {
+				const detail = result.message || result.error || `Email service returned HTTP ${response.status}.`;
+				throw new Error(detail);
+			}
+
+			contactForm.reset();
+			setContactStatus('Message sent successfully. Thank you for reaching out.');
+		} catch (error) {
+			console.error('Contact form submission failed:', error);
+			const detail = error instanceof TypeError
+				? `Network request failed (${error.message}). Check the browser console and Network tab for a CORS or connection error.`
+				: error.message;
+			setContactStatus(`Message could not be sent: ${detail}`, true);
+		} finally {
+			sendBtn.disabled = false;
+		}
 	})
 
 	document.querySelector('.lightbox-img').addEventListener('click',function(event){
@@ -269,4 +314,3 @@ window.initSite = function initSite() {
 		});
 	}
 };
-

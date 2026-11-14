@@ -1349,6 +1349,9 @@ body.is-scrolled .aside{background:rgba(248,245,239,.96); border-bottom-color:va
 .contact .contact-form .form-item .form-control:focus{border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft);}
 .contact .contact-form .btn{background:var(--accent);}
 .contact .contact-form .btn:hover{background:var(--accent-dark);}
+.contact .contact-form .btn:disabled{cursor:wait; opacity:.65; transform:none;}
+.contact .contact-form .form-status{margin-top:14px; color:var(--accent); font-size:14px;}
+.contact .contact-form .form-status.error{color:#c0392b;}
 
 /* ---------- Lightbox & preloader ---------- */
 .lightbox{background:rgba(18,24,26,.92); backdrop-filter:blur(8px);}
