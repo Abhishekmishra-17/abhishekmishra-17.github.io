@@ -39,7 +39,7 @@
 		"title": "Web Design",
 		"image": "images/webDesign/ACMS_web.png",
 		"link": "https://vcddxm6utnzciqbmzqzvwq.on.drv.tw/www.AccidentMS.com/",
-		"repo": "https://github.com/Abhishekmishra-17/1st-project-accident-control-management-system"
+		"repo": "https://github.com/Abhishekmishra-17/accident-control-system"
 	},
 	{
 		"category": "web-design",
@@ -60,21 +60,21 @@
 		"title": "Machine Learning",
 		"image": "images/ml/faceattendance.JPG",
 		"link": "",
-		"repo": "https://github.com/Abhishekmishra-17/Attendance-system-using-face-recognition-onscaling-temperature"
+		"repo": "https://github.com/Abhishekmishra-17/face-recognition-attendance-system"
 	},
 	{
 		"category": "ml",
 		"title": "Machine Learning",
 		"image": "images/ml/platenumber.jpg",
 		"link": "",
-		"repo": "https://github.com/Abhishekmishra-17/Vehicle-plate-number-detection-using-python"
+		"repo": "https://github.com/Abhishekmishra-17/vehicle-license-plate-recognition"
 	},
 	{
 		"category": "ml",
 		"title": "Machine Learning",
 		"image": "images/ml/hand-emoji.png",
 		"link": "",
-		"repo": "https://github.com/Abhishekmishra-17/hand-emojinator-using-python"
+		"repo": "https://github.com/Abhishekmishra-17/hand-gesture-emoji-recognition"
 	},
 	{
 		"category": "ml",
