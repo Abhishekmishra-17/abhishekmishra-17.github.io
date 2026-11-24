@@ -90,5 +90,19 @@
 		"date": "11 May 2026",
 		"image": "images/blogs/medium-blog.png",
 		"link": "https://medium.com/@mishraabhi8924/how-to-bypass-aws-cognito-auth-for-public-apis-and-handle-x-api-key-in-lambda-baadadd6a62f"
+	},
+	{
+		"title": "FastAPI on AWS Lambda vs Plain Lambda: The Hidden Costs Nobody Tells You",
+		"description": "Putting FastAPI on AWS Lambda isn't wrong. Still, it isn't free either: you trade a thin, single-purpose function for a full web framework Lambda was never designed to host, and you pay in cold-start time, memory, and subtle runtime behaviors that surprise even experienced engineers......",
+		"tags": [
+			"Fastapi",
+			"Serverless",
+			"Python",
+			"AWS",
+			"Software Development"
+		],
+		"date": "21 November 2026",
+		"image": "images/blogs/fastapi.png",
+		"link": "https://medium.com/@mishraabhi8924/fastapi-on-aws-lambda-vs-plain-lambda-the-hidden-costs-nobody-tells-you-24b8a7abec4f?sharedUserId=mishraabhi8924"
 	}
 ]
